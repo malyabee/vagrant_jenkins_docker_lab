@@ -35,7 +35,7 @@
        
    
    
-#### Docker rommands to run wordpress and mysql in a  container  
+#### Docker rommands to run jenkinsci/blueocean in a  container  
          [vagrant@docker ~]$  docker run -u root  --rm  -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
          
 
