@@ -1,5 +1,5 @@
-## IaaC project : docker_lab  
- A Vagrantfile to build a docker host on  virtual envirnment to learn docker concepts.  
+## Vagrant Jenkins lab on Docker 
+ A Vagrantfile to build a Jenkins   on docker  envirnment to learn Jenkins concepts.  
  
 1. Docker Host  (centos/7)
     The docker node configured with docker software and ready to host containers. 
@@ -11,11 +11,11 @@
   Step 2 :  Install vagrant  (https://www.vagrantup.com)
 
   Step 3 :  Download and  Vagrant file  
-       git clone https://github.com/malyabee/IaaC.git  
+       git clone https://github.com/malyabee/vagrant_jenkins_docker_lab.git  
 
   Step 4  : starting virtual machines 
 
-       $ cd IaaC/docker_lab
+       $ cd vagrant_jenkins_docker_lab
  
        $ vagrant up
        # "vagrant up" might take a while for first time
@@ -37,56 +37,14 @@
    
    
 #### Docker rommands to run wordpress and mysql in a  container  
-         [vagrant@docker ~]$ mkdir wordpress
-         [vagrant@docker ~]$ cd wordpress
-         [vagrant@docker wordpress]$ docker pull tutum/wordpress
+         [vagrant@docker ~]$  docker run -u root  --rm  -d -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkinsci/blueocean
          
-         # To list out local docker images
-         [vagrant@docker wordpress]$ docker image ls
-         
-         # To run an image and to create a container based on image
-         [vagrant@docker wordpress]$ docker run -d -p 4000:80 --name blog tutum/wordpress
-         
-         # You can access wordpress using browse http://localhost:4000 
-         
-         # if you want to list our running containers use following command.
-         [vagrant@docker wordpress]$ docker container ls
-           (or)
-         [vagrant@docker wordpress]$ docker ps
-         
-         # Command to remove blog container 
-         [vagrant@docker wordpress]$ docker rm -f blog
-         
-         # Docker command to login into container 
-         [vagrant@docker wordpress]$ docker exec -it blog bash
-         
-         
-#### Docker rommands to run wordpress and mysql in different containers
-         [vagrant@docker ~]$ mkdir wordpress02
-         [vagrant@docker ~]$ cd wordpress02
-         [vagrant@docker wordpress02]$ docker run --name wp-mysql -e MYSQL_ROOT_PASSWORD=yoursecretpassword -d mysql
-         [vagrant@docker wordpress02]$ docker run --name wordpress --link wp-mysql:mysql -p 8000:80 -d  wordpress
-         
-         
-         # command to loging wordpress container
-         [vagrant@docker wordpress02]$ docker exec -it  wordpress bash
-         
-         
-
-         
-### Docker volumes
-
-Step 1 :  Create a volume using following command. This command will create a volume with name "webvol"
-         docker volume create webvol
-
-Step 2 : List volumes using 
-          docker volume ls
-
-Step 3 : Attaching volumes with httpd container
-          docker container run -d -p 8000:80 --name=web --mount source=webvol,target=/local/apache2/htdocs httpd
 
 
 
+#### Jenkins dashboard
+
+Go to http://localhost:8080
 
 ### Host compatability :
 
