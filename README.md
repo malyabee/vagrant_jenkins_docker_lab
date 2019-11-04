@@ -45,6 +45,12 @@
 
 Go to http://localhost:8080
 
+
+This will prompt you to enter Initial Admin password.  you can get password with following command
+
+
+      sudo cat /var/lib/docker/volumes/jenkins-data/_data/secrets/initialAdminPassword
+
 ### Host compatability :
 
     This Vagrant verified on Mac OS.
