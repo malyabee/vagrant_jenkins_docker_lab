@@ -30,8 +30,7 @@
 ###  commands to verify docker version  and start docker daemon
       [vagrant@docker ~]$ docker version
        
-       # starting docker daemon
-       [vagrant@docker ~]$ sudo systemctl start docker
+
        
        
    
